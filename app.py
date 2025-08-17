@@ -5,7 +5,14 @@ import pandas as pd
 import joblib, json
 from datetime import date as date_cls
 import gdown
+import os
 
+MODEL_PATH = "random_forest_model.pkl"
+if not os.path.exists(MODEL_PATH):
+    url = "https://drive.google.com/uc?id="1P-uH27QikOZ9LyW4L9DCgeAHq7q8XlWt"
+    gdown.download(url, MODEL_PATH, quiet=False)
+
+model = pickle.load(open(MODEL_PATH, "rb"))
 # Google Drive file IDs
 dataset_id = "1jJ-ElaCQVc3rV4CtVKvqdRkrq94kkcU2"
 model_id = "1P-uH27QikOZ9LyW4L9DCgeAHq7q8XlWt"
@@ -174,4 +181,5 @@ elif viz_option == "Top 10 Products":
     sns.barplot(x=top_products.index, y=top_products.values, ax=ax)
     ax.set_title("Top 10 Products by Sales")
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
+
     st.pyplot(fig)
