@@ -2,7 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
-import joblib, json
+import pickle, json
 from datetime import date as date_cls
 import gdown
 import os
@@ -12,7 +12,8 @@ if not os.path.exists(MODEL_PATH):
     url = "https://drive.google.com/uc?id=1P-uH27QikOZ9LyW4L9DCgeAHq7q8XlWt"
     gdown.download(url, MODEL_PATH, quiet=False)
 
-model = joblib.load(open(MODEL_PATH, "rb"))
+with open(MODEL_PATH, "rb") as f:
+    model = pickle.load(f)
 # Google Drive file IDs
 dataset_id = "1jJ-ElaCQVc3rV4CtVKvqdRkrq94kkcU2"
 model_id = "1P-uH27QikOZ9LyW4L9DCgeAHq7q8XlWt"
@@ -183,6 +184,7 @@ elif viz_option == "Top 10 Products":
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
 
     st.pyplot(fig)
+
 
 
 
