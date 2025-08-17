@@ -7,6 +7,6 @@ Built with **Streamlit**, trained on a dataset of 50K sales records.
 - Load dataset from Google Drive
 - Predict future sales
 - Visualize data with charts
-- Easy to deploy on Streamlit Cloud
+
 
 ## 🗂️ Project Structure
