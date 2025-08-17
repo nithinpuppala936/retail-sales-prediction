@@ -25,7 +25,7 @@ with open(MODEL_PATH, "rb") as f:
 if not os.path.exists(output):
     gdown.download(url, output, quiet=False)
 
-model = joblib.load(output)
+
 model_id = "1P-uH27QikOZ9LyW4L9DCgeAHq7q8XlWt"
 
 # Output file names
@@ -194,6 +194,7 @@ elif viz_option == "Top 10 Products":
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
 
     st.pyplot(fig)
+
 
 
 
