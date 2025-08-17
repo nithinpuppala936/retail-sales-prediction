@@ -2,22 +2,24 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
-import pickle, json
-from datetime import date as date_cls
+import pickle, os
 import gdown
-import os
 
+# Google Drive File ID for model
+model_id = "1P-uH27QlKOZ9LyW4LL9DCgeAHq7q8XlWt"
 MODEL_PATH = "random_forest_model.pkl"
+
+# Download model if not present
 if not os.path.exists(MODEL_PATH):
-    url = "https://drive.google.com/uc?id=1P-uH27QikOZ9LyW4L9DCgeAHq7q8XlWt"
+    url = f"https://drive.google.com/uc?id={model_id}"
     gdown.download(url, MODEL_PATH, quiet=False)
 
+# ✅ Debug: check first few bytes of file
 with open(MODEL_PATH, "rb") as f:
     first_bytes = f.read(100)
-    print(first_bytes[:50])
+    st.write("First 50 bytes of model file:", first_bytes[:50])  # shows in Streamlit log
+    f.seek(0)  # reset file pointer
     model = pickle.load(f)
-# Google Drive file IDs
-dataset_id = "1jJ-ElaCQVc3rV4CtVKvqdRkrq94kkcU2"
 model_id = "1P-uH27QikOZ9LyW4L9DCgeAHq7q8XlWt"
 
 # Output file names
@@ -186,6 +188,7 @@ elif viz_option == "Top 10 Products":
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
 
     st.pyplot(fig)
+
 
 
 
