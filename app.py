@@ -9,7 +9,7 @@ import os
 
 MODEL_PATH = "random_forest_model.pkl"
 if not os.path.exists(MODEL_PATH):
-    url = "https://drive.google.com/uc?id="1P-uH27QikOZ9LyW4L9DCgeAHq7q8XlWt"
+    url = "https://drive.google.com/uc?id=1P-uH27QikOZ9LyW4L9DCgeAHq7q8XlWt"
     gdown.download(url, MODEL_PATH, quiet=False)
 
 model = pickle.load(open(MODEL_PATH, "rb"))
@@ -183,3 +183,4 @@ elif viz_option == "Top 10 Products":
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
 
     st.pyplot(fig)
+
