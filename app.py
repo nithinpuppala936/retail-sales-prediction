@@ -19,7 +19,7 @@ with open(MODEL_PATH, "rb") as f:
     first_bytes = f.read(100)
     st.write("First 50 bytes of model file:", first_bytes[:50])  # shows in Streamlit log
     f.seek(0)  # reset file pointer
-    model = joblib.load(f)
+    model = joblib.load("random_forest_model.pkl")
 model_id = "1P-uH27QikOZ9LyW4L9DCgeAHq7q8XlWt"
 
 # Output file names
@@ -188,6 +188,7 @@ elif viz_option == "Top 10 Products":
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
 
     st.pyplot(fig)
+
 
 
 
