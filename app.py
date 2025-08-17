@@ -102,7 +102,7 @@ st.write("Predict **Total Sales** from store, product, price, promotions and dat
 c1, c2 = st.columns(2)
 
 with c1:
-    the_date = st.date_input("Date", value=date_cls(yyyy, mm, dd))
+    the_date = st.date_input("Date", value=date_cls(2022, 01, 01))
     store_id = st.number_input("Store ID", min_value=1, step=1)
     product_id = st.number_input("Product ID", min_value=1, step=1)
     category = st.selectbox("Category", CATEGORY_OPTIONS)
@@ -194,6 +194,7 @@ elif viz_option == "Top 10 Products":
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
 
     st.pyplot(fig)
+
 
 
 
