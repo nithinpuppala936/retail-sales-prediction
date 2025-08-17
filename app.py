@@ -13,6 +13,8 @@ if not os.path.exists(MODEL_PATH):
     gdown.download(url, MODEL_PATH, quiet=False)
 
 with open(MODEL_PATH, "rb") as f:
+    header = f.read(20)
+    print("File header:", header)
     model = pickle.load(f)
 # Google Drive file IDs
 dataset_id = "1jJ-ElaCQVc3rV4CtVKvqdRkrq94kkcU2"
@@ -184,6 +186,7 @@ elif viz_option == "Top 10 Products":
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
 
     st.pyplot(fig)
+
 
 
 
