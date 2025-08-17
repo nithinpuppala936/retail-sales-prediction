@@ -35,7 +35,7 @@ model_path = "model.pkl"
 # Download only if not already present
 import os
 if not os.path.exists(dataset_path):
-    gdown.download(f"https://drive.google.com/uc?id={dataset_id}", dataset_path, quiet=False)
+    gdown.download(f"https://drive.google.com/uc?id={dataset_path}", dataset_path, quiet=False)
 
 if not os.path.exists(model_path):
     gdown.download(f"https://drive.google.com/uc?id={model_id}", model_path, quiet=False)
@@ -194,6 +194,7 @@ elif viz_option == "Top 10 Products":
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
 
     st.pyplot(fig)
+
 
 
 
