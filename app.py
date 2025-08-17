@@ -4,9 +4,9 @@ import seaborn as sns
 import pandas as pd
 import joblib, os
 import gdown
-
+#https://drive.google.com/file/d/1fWab1Vjh8V7InNBGArVF8Yfia5R8mGRs/view?usp=sharing
 # Google Drive File ID for model
-model_id = "1P-uH27QlKOZ9LyW4LL9DCgeAHq7q8XlWt"
+model_id = "1fWab1Vjh8V7InNBGArVF8Yfia5R8mGRs"
 MODEL_PATH = "random_forest_model.pkl"
 
 # Download model if not present
@@ -19,7 +19,13 @@ with open(MODEL_PATH, "rb") as f:
     first_bytes = f.read(100)
     st.write("First 50 bytes of model file:", first_bytes[:50])  # shows in Streamlit log
     f.seek(0)  # reset file pointer
-    model = joblib.load("random_forest_model.pkl")
+    url = "https://drive.google.com/uc?id=1fWab1Vjh8V7InNBGArVF8Yfia5R8mGRs"  # replace with your file ID
+    output = "random_forest_model.pkl"
+
+if not os.path.exists(output):
+    gdown.download(url, output, quiet=False)
+
+model = joblib.load(output)
 model_id = "1P-uH27QikOZ9LyW4L9DCgeAHq7q8XlWt"
 
 # Output file names
@@ -188,6 +194,7 @@ elif viz_option == "Top 10 Products":
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
 
     st.pyplot(fig)
+
 
 
 
